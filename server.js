@@ -11,7 +11,7 @@ let port = process.env.PORT || 3000;
 
 const allowedDomain =
     process.env.WHITE_DOMAIN ?
-        process.env.WHITE_DOMAIN.split(',') : ['http://localhost:3000','god-calculator.com'];
+        process.env.WHITE_DOMAIN.split(',') : ['god-calculator.com'];
 
 const corsOptions = {
     origin: function (origin, callback) {
@@ -28,6 +28,7 @@ server.use('/proxy', proxyApi);
 server.use('/api', api);
 
 function startServer(host, port) {
+    console.log('허용 도메인 : ', allowedDomain)
     server.listen(port, host, () => {
         console.log(`서버가 ${host}:${port} 에서 실행 중`);
     }).on('error', (err) => {
