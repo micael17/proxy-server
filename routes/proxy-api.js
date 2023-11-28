@@ -9,6 +9,8 @@ router.get('/shortUrl', (req, res) => {
         return res.status(400).send('url과 api 쿼리 파라미터가 필요합니다.');
     }
 
+    console.log('요청 파라미터= api: ', api, ', url: ', url)
+
     const options = {
         headers: {
             'Content-Type': 'application/json',
